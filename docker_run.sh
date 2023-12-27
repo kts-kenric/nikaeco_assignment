@@ -1,1 +1,0 @@
-docker run --gpus device=0 -v .:/data --rm --net=host -i --name nikaeco_latest nikaeco /bin/bash /data/run.sh
