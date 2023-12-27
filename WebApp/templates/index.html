@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NikaEcoGPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>NikaEcoGPT</h1>
+
+    <div class="chat-container" id="chat-container">
+        {% for chat in chat_history %}
+            <div class="message user-message">
+                <p>{{ chat['user'] }}</p>
+            </div>
+            <div class="message bot-message">
+                <p>{{ chat['bot'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="input-container">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="file" accept=".pdf" multiple>
+            <button type="submit" id="submitButton">Upload</button>
+        </form>
+        <div id="fileUploadedLabel" style="display: none;">File uploaded successfully!</div>
+
+        <div id="form-container">
+            <input type="text" id="user_input" placeholder="Enter your message...">
+            <button id="submit-button" type="button">Submit</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // JavaScript code to scroll chat container to the bottom
+        var chatContainer = document.getElementById('chat-container');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    </script>
+</body>
+</html>
